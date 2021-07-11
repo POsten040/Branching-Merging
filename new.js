@@ -1,2 +1,2 @@
-let x  =0;
+let x  = "string";
 let y = 100;
