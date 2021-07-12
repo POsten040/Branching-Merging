@@ -3,9 +3,6 @@ function coolfunc(params, sums) {
 }
 //coomment
 //comment
-function name(params) {
-  
-  array.forEach(params => {
-    return element;
-  });
+function none(params) {
+  return params;
 }
