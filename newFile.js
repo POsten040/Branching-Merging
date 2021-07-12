@@ -14,7 +14,13 @@ function name(params) {
     return params * 100;
   });
 }
+<<<<<<< HEAD
 function H(params) {
   return H();
 }
 >>>>>>> 522f847 (H)
+=======
+function F(params) {
+  return 'sick money';
+}
+>>>>>>> 6d0579d (sick)
