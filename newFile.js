@@ -11,4 +11,5 @@ function name(params) {
 }
 function F(params) {
   return 'sick money';
+  handleClick(0-1);
 }

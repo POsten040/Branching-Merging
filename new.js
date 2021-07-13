@@ -4,3 +4,66 @@ let y = 100;
 function handleClick(){
   console.log('click from button')
 }
+
+function handlePick(){
+  console.log('pick')
+  let out = [];
+  for (let x = 0; x < array.length -1; x++) {
+    const element = array[x];
+    out.push(element);
+  }
+  return out;
+}
+
+function sorted3(arr, out = []){ 
+    console.log('start')
+    if(arr.length >= 1){
+      // console.log(count)
+      console.log(arr)
+      let bigNum = Math.max(...arr);  
+      out.push(bigNum);
+      arr.splice(arr.indexOf(bigNum), 1);
+      let newArr = arr;
+      console.log(out + " " + 'Out before loop')
+      console.log(arr + " " + "array before loop")
+      sorted3(newArr, out);
+      return out;
+    } else if(arr.length < 1){
+      console.log(out)
+      return arr;
+      console.log(arr + " " + "array")
+    }
+}
+
+
+function Sieve(money, change = {'P': 0, 'N': 0, 'D': 0, 'Q': 0}){
+	if(money > 0 ){
+  	if(money > .25){
+    	change.Q = Math.floor(money/.25);
+      let remainingMoney = money - (change.Q * .25) 
+      console.log(change.Q)
+      console.log('money' + remainingMoney)
+      return Sieve(remainingMoney, change)
+    } else if (money > .10){
+    	change.D = Math.floor(money/.10);
+      let remainingMoney = money - (change.D * .10) 
+      console.log('change' + ' ' + change.D)
+      console.log('money' + remainingMoney)
+      return Sieve(remainingMoney, change)
+    } else if (money > .05){
+    	change.N = Math.floor(money/.05);
+      let remainingMoney = money - (change.N * .05)
+      console.log(change)
+      console.log(remainingMoney)
+      return Sieve(remainingMoney, change)
+    } else if (money > .01){
+    	change.P = Math.floor(money/.01);
+      let remainingMoney = (money - (change.P * .01))
+
+      console.log(remainingMoney)
+      return `Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`;
+    }
+  } else {
+  	return 'something went wrong!';
+  }
+}
