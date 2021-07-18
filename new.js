@@ -3,49 +3,58 @@ let y = 100;
 
 
 
-function count10(x=0){
+function count101(x=0){
   switch (x<10) {
     case true:
       console.log(x+1);
-      count10(x+1)
+      count101(x+1)
       break;
     default:
+      console.log(x)
       return x
-      console.log('done')
   }
 }
 
 function count10(x=0){
   if(x<10) {
-    console.log(x+1);
+    // console.log(x+1);
     return count10(x+1)
   }else{
-    console.log('done')
+    console.log(x + ' ' + 'done')
     return x
   }
 }
 
-//1st call: count10(0     logs(0+1)
-//            count10(1     logs(1+1)
-//              count10(2     logs(2+1)
-//                count10(3     logs(3+1)
-//                ...)
-//                  )
-//                )
-//              )
+//calls go into stack: 
+//count10(0     logs(0+1)
+//  count10(1     logs(1+1)
+//    count10(2     logs(2+1)
+//      count10(3     logs(3+1)
+//        ...))))
+//calss come out of stack (and show up in the console). The order is Last In First Out (LIFO)
+//return  1
+//  return  2
+//    return 3
+//      ...
 
-$(document).ready(function(){
-  $('#button').click(function (event){
-  // count10();
-  // console.log(event);
-  // console.log('ping')
-  });
-  $('.parent').click((e)=>{
-    count10();
-    // console.log(e);
-    // console.log('pong')
-  })
-});
+function Pong(){
+  console.log('onclick = Pong')
+}
+function Ping(){
+  console.log('onclick = Ping')
+}
+// $(document).ready(function(){
+//   $('#button').click(function (event){
+//   // count10();
+//   console.log(event);
+//   console.log('ping')
+//   });
+//   $('.parent').click((e)=>{
+//     // count10();
+//     console.log(e);
+//     console.log('pong')
+//   })
+// });
 
 
 // $('#button').click(function (event){
@@ -105,7 +114,7 @@ function Sieve(money, change = {'P': 0, 'N': 0, 'D': 0, 'Q': 0}){
     	change.P = Math.floor(money/.01);
       let remainingMoney = (money - (change.P * .01))
 
-      // console.log(remainingMoney)
+      console.log(`Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`)
       return `Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`;
     }
   } else {
