@@ -7,7 +7,7 @@ function count101(x=0){
   switch (x<10) {
     case true:
       console.log(x+1);
-      count101(x+1)
+      return count101(x+1)
       break;
     default:
       console.log(x)
@@ -18,7 +18,7 @@ function count101(x=0){
 function count10(x=0){
   if(x<10) {
     // console.log(x+1);
-    return count10(x+1)
+    count10(x+1)
   }else{
     console.log(x + ' ' + 'done')
     return x
@@ -30,7 +30,7 @@ function count10(x=0){
 //  count10(1     logs(1+1)
 //    count10(2     logs(2+1)
 //      count10(3     logs(3+1)
-//        ...))))
+//        ...)))) 
 //calss come out of stack (and show up in the console). The order is Last In First Out (LIFO)
 //return  1
 //  return  2
@@ -94,27 +94,27 @@ function Sieve(money, change = {'P': 0, 'N': 0, 'D': 0, 'Q': 0}){
 	if(money > 0 ){
   	if(money > .25){
     	change.Q = Math.floor(money/.25);
-      let remainingMoney = money - (change.Q * .25) 
+      const remainingMoney = money - (change.Q * .25) 
       // console.log(change.Q)
       // console.log('money' + remainingMoney)
       Sieve(remainingMoney, change)
     } else if (money > .10){
     	change.D = Math.floor(money/.10);
-      let remainingMoney = money - (change.D * .10) 
+      const remainingMoney = money - (change.D * .10) 
       // console.log('change' + ' ' + change.D)
       // console.log('money' + remainingMoney)
       Sieve(remainingMoney, change)
     } else if (money > .05){
     	change.N = Math.floor(money/.05);
-      let remainingMoney = money - (change.N * .05)
+      const remainingMoney = money - (change.N * .05)
       // console.log(change)
       // console.log(remainingMoney)
       Sieve(remainingMoney, change)
     } else if (money > .01){
     	change.P = Math.floor(money/.01);
-      let remainingMoney = (money - (change.P * .01))
+      const remainingMoney = (money - (change.P * .01))
 
-      console.log(`Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`)
+      //console.log(`Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`)
       return `Your Money's worth ${change.Q} quarters, ${change.D} dimes, ${change.N} nickles, ${change.P} pennies`;
     }
   } else {
@@ -171,4 +171,27 @@ function Reverse(word) {
     }
   }
   return outArr.join();
+}
+
+
+//ARROW SYNTAX & IMPLIED RETURN
+const returnsASingleThing = thing => thing
+returnsASingleThing('one thing')
+
+const obj = {
+  cash: 100,
+  favoriteShow: 'Gundam',
+  nestedObj: {
+    deepProp: 'deepPropValue',
+    deepNumber: 10000
+  }
+}
+//HOISTING
+function Call(param){
+  console.log(`${param}`)
+  return `${param} hoisted call function reached`
+}
+const call = (param) => {
+  console.log(`${param}`)
+  return `${param} Not hoisted call function reached`
 }
